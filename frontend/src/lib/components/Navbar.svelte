@@ -5,6 +5,7 @@
         <a href="/">Home</a>
         <a href="/problems">Problems</a>
         <a href="/playground">Playground</a>
+        <a href="/courses">Courses</a>
     </nav>
 </div>
 
@@ -12,7 +13,7 @@
     .navbar {
         background-color: gray;
         width: 100vw;
-        height: 60px;
+        height: 70px;
         padding: 30px;
         display: flex;
         align-items: center;
