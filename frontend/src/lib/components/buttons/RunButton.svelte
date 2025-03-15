@@ -1,6 +1,6 @@
 <script lang="ts">
     import { get } from "svelte/store";
-    import { editorContent } from "../../../stores";
+    import { editorContent } from "../../../editorStores";
 
     async function run() {
         let content = get(editorContent);

@@ -1,4 +1,20 @@
+<script lang="ts">
+    import { Hamburger } from 'svelte-hamburgers';
+
+    let open = $state(false);
+</script>
+
+
 <div class="courses">
+
+
+<Hamburger 
+    bind:open
+    type="collapse"
+    title="Toggle nav links"
+    ariaControls="nav"
+/>
+
 <nav>
     <a href="/courses/python">Python</a>
     <a href="/courses/html">HTML</a>
@@ -7,16 +23,22 @@
 </nav>
 </div>
 
+
 <style>
     .courses {
         background-color: darkslategrey;
         width: 100vw;
-        height: 20px;
-        padding: 20px;
+        height: 25px;
+        padding: 22px;
         display: flex;
         align-items: center;
         justify-content: flex-start;
         gap: 20px;
+        margin-top: 70px;
+        position: fixed;
+        z-index: 1000;
+        top: 0;
+        left: 0;
     }
 
     .courses nav {

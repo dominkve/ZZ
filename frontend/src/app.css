@@ -4,4 +4,12 @@
 
 body {
     background: lightslategray;
+    @apply grid justify-center;
+    padding-top: 92px;
+}
+
+h1 {
+    @apply text-4xl font-bold text-center;
+    margin: 1rem 0;
+    padding-top: 10px;
 }

@@ -1,6 +1,6 @@
 <script lang="ts">
     import { get } from "svelte/store";
-    import { editorContent } from "../../../stores";
+    import { editorContent } from "../../../editorStores";
 
     async function submit() {
         const content = get(editorContent); // Get store value without subscribing

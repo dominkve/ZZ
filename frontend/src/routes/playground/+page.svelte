@@ -1,8 +1,7 @@
 <script lang="ts">
     import { onMount } from 'svelte';
     import { get } from "svelte/store";
-    import { editorContent } from "../../stores";
-    import Navbar from '$lib/components/Navbar.svelte';
+    import { editorContent } from "../../editorStores";
     import CodeMirror from '$lib/components/CodeMirror.svelte';
 	import ExecuteButton from '$lib/components/buttons/ExecuteButton.svelte';
 
@@ -36,7 +35,7 @@
         .then(data => console.log(data))
     }
 </script>
-<Navbar />
+
 <CodeMirror />
 <ExecuteButton run={run}/>
 <select bind:value={lang}>

@@ -1,6 +1,5 @@
 <script lang="ts">
     import { onMount } from "svelte";
-    import Navbar from '$lib/components/Navbar.svelte';
 
     let problems: { id: number; name: string }[] = [];
 
@@ -13,7 +12,8 @@
         problems = data;
     });
 </script>
-<Navbar />
+
+
 <ul>
     <li class="list-head">Problem List</li>
     {#each problems as { id, name }}

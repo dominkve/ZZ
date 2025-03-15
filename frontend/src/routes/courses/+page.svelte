@@ -1,2 +1,1 @@
-<script lang="ts">
-</script>
+<h1>Courses</h1>

@@ -19,6 +19,10 @@
         align-items: center;
         justify-content: flex-start;
         gap: 20px;
+        position: fixed;
+        z-index: 1000;
+        top: 0;
+        left: 0;
     }
 
     .navbar h1 {
