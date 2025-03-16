@@ -1,23 +1,34 @@
 <script lang="ts">
-    import { onMount } from 'svelte';
+    import { onMount, onDestroy } from 'svelte';
     import { get } from "svelte/store";
     import { editorContent } from "../../editorStores";
     import CodeMirror from '$lib/components/CodeMirror.svelte';
 	import ExecuteButton from '$lib/components/buttons/ExecuteButton.svelte';
 
-    let lang = $state();
-    let languages: { language: String }[] = $state([]);
-    onMount(async () => {
-        console.log('Fetching languages.');
-        const response = await fetch("http://localhost:3000/languages", {
-            method: "GET",
+    let editor: boolean = false;
+    onMount(() => {
+
+        let content = get(editorContent);
+
+        if (content != "Start content") {
+            sessionStorage.setItem("content", content);
+        } else {
+            content = sessionStorage.getItem("content") || "";
+            editorContent.set(content);
+        }
+
+        editor = true;
+        const handleBeforeUnload  = () => {
+            sessionStorage.setItem("content", get(editorContent));
+        };
+
+        window.addEventListener('beforeunload', handleBeforeUnload);
+        
+        onDestroy(() => {
+            window.removeEventListener('beforeunload', handleBeforeUnload);
         });
-
-        const data = await response.json();
-        console.log("Fetched:\n", data);
-        languages = data;
     });
-
+/*
     async function run() {
         let content = get(editorContent);
         console.log("Editor content:\n", content);
@@ -33,14 +44,14 @@
         })
         .then(response => response.json())
         .then(data => console.log(data))
-    }
+    } */
 </script>
 
-<CodeMirror />
-<ExecuteButton run={run}/>
-<select bind:value={lang}>
-    {#each languages as { language }}
-    <option>{language}</option>
-    {/each}
-</select>
+{#if editor}
+<CodeMirror select={true}/>
+{/if}
+<!--
+<ExecuteButton run={run}/> -->
+
+
 

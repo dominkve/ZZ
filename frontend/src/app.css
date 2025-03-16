@@ -6,6 +6,8 @@ body {
     background: lightslategray;
     @apply grid justify-center;
     padding-top: 92px;
+    margin-left: 30vw;
+    margin-right: 30vw;
 }
 
 h1 {

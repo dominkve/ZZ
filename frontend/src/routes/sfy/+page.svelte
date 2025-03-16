@@ -18,7 +18,6 @@
         language = sessionStorage.getItem('language') || "";
 
         const handleBeforeUnload  = () => {
-            console.log('beforeunload');
             sessionStorage.setItem("content", get(editorContent));
         };
 

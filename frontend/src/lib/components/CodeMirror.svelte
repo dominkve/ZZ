@@ -2,6 +2,7 @@
     import { onMount } from 'svelte';
     import { basicSetup } from 'codemirror'; // Just a collection of extensions
     import { EditorView, keymap } from '@codemirror/view'; // The UI of the editor
+    import { EditorState, Compartment } from '@codemirror/state';
     import { editorContent } from "../../editorStores";
     import { indentWithTab } from '@codemirror/commands';
     import { oneDark } from '@codemirror/theme-one-dark';
@@ -10,7 +11,10 @@
     import { cpp } from '@codemirror/lang-cpp';
     import { get } from 'svelte/store';
 
-    let { language = ""}: { language: string } = $props();
+    let { language = 'py', select = false }: { language?: string, select?: boolean } = $props();
+
+    let lang = new Compartment;
+
 
     function getLanguageExtension(lang: string) {
         const languages: Record<string, any> = {
@@ -37,18 +41,18 @@
         },
     }, {dark: true});
 
+    let editorState: EditorState;
+
     onMount(() => {
         console.log('the component has mounted');
         
-        // create the UI interface
-        editor = new EditorView({
-            doc: get(editorContent), // The content the user sees
-            parent: editorContainer, 
+        editorState = EditorState.create({
+            doc: get(editorContent),
             extensions: [
                 basicSetup,
                 keymap.of([indentWithTab]),
                 oneDark,
-                getLanguageExtension(language),
+                lang.of(cpp()),
                 fixedHeight,
                 EditorView.theme({
                     "&": {
@@ -62,18 +66,38 @@
                 })
             ]
         });
+        
+        // create the UI interface
+        editor = new EditorView({
+            doc: get(editorContent), // The content the user sees
+            state: editorState,
+            parent: editorContainer, 
+        });
 
+        console.log(editorState.doc.toString());
         // Cleanup function: Destroy CodeMirror when the component is removed
         return () => {
             editor.destroy();
         };
     });
 
-
+    function setLang() {
+        console.log(lang);
+        editor.dispatch({
+            effects: lang.reconfigure(getLanguageExtension(language))
+        });
+        
+    }
 </script>
 
 <div class="editor-container" bind:this={editorContainer}></div>
-
+{#if select}
+<select bind:value={language} onchange={setLang}>
+    <option value="cpp">C++</option>
+    <option value="javascript">JavaScript</option>
+    <option value="html">HTML</option>
+</select>
+{/if}
 <style>
     .editor-container {
         position: absolute;

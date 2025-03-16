@@ -1,8 +1,7 @@
 <div class="navbar">
     <!-- 早 -->
-    <h1>Zaoζάω</h1>
     <nav>
-        <a href="/">Home</a>
+        <a href="/" class="name">Zaoζάω</a>
         <a href="/problems">Problems</a>
         <a href="/playground">Playground</a>
         <a href="/courses">Courses</a>
@@ -25,7 +24,7 @@
         left: 0;
     }
 
-    .navbar h1 {
+    .name {
         font-size: 30px;
         color: rgb(71, 31, 16);
     }
