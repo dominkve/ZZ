@@ -1,0 +1,11 @@
+@import 'tailwindcss';
+@plugin '@tailwindcss/typography';
+@plugin '@tailwindcss/forms';
+
+.courses h2 {
+    @apply relative text-3xl font-bold inline-block pb-2 after:block after:w-[120%] after:h-1 after:bg-blue-500 after:mt-1 after:left-[-10%] after:relative;
+}
+
+.courses p {
+    @apply text-xl tracking-tight;
+}

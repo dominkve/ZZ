@@ -1,0 +1,17 @@
+@import 'tailwindcss';
+@plugin '@tailwindcss/typography';
+@plugin '@tailwindcss/forms';
+
+body {
+    background: lightslategray;
+    @apply grid justify-center;
+    padding-top: 92px;
+    margin-left: 30vw;
+    margin-right: 30vw;
+}
+
+h1 {
+    @apply text-4xl font-bold text-center;
+    margin: 1rem 0;
+    padding-top: 10px;
+}
