@@ -8,5 +8,6 @@ onMount(() => {
 </script>
 
 <div>
+    <h1><a href="/courses/cpp">C++</a></h1>
     <slot></slot>
 </div>

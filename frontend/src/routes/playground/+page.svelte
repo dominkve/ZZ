@@ -4,6 +4,7 @@
     import { editorContent } from "../../editorStores";
     import CodeMirror from '$lib/components/CodeMirror.svelte';
 	import ExecuteButton from '$lib/components/buttons/ExecuteButton.svelte';
+    import OutputWindow from '$lib/components/OutputWindow.svelte';
 
     let editor: boolean = false;
     onMount(() => {
@@ -50,6 +51,8 @@
 {#if editor}
 <CodeMirror select={true}/>
 {/if}
+
+
 <!--
 <ExecuteButton run={run}/> -->
 

@@ -6,6 +6,7 @@
 	import OutputWindow from "$lib/components/OutputWindow.svelte";
 
     let language: string = "";
+
     onMount(() => {
         let content = get(editorContent);
 
@@ -28,9 +29,18 @@
         });
     });
 
+    const goBack = () => {
+        window.history.back();
+    };
 </script>
 
 {#if language}
 <CodeMirror {language}/>
 {/if}
+
+<div>
+    <button  on:click={goBack}
+    class="p-2 bg-emerald-500">Back</button>
+</div>
+
 <OutputWindow />

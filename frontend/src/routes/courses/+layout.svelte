@@ -9,10 +9,3 @@
         <slot></slot>
     </main>
 </div>
-
-<style>
-    main {
-        margin-left: 30vw;
-        margin-right: 30vw;
-    }
-</style>

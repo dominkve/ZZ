@@ -4,8 +4,25 @@
 
 .courses h2 {
     @apply relative text-3xl font-bold inline-block pb-2 after:block after:w-[120%] after:h-1 after:bg-blue-500 after:mt-1 after:left-[-10%] after:relative;
+    text-align: left;
+    font-size: 35px;
+    padding: 15px;
 }
 
 .courses p {
     @apply text-xl tracking-tight;
+}
+
+.courses h1 {
+    text-align: center;
+    font-size: 50px;
+    font-weight: bold;
+    padding: 20px;
+    color: gainsboro;
+}
+
+.courses .button-container {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
 }

@@ -2,9 +2,9 @@
     <!-- 早 -->
     <nav>
         <a href="/" class="name">Zaoζάω</a>
+        <a href="/courses">Courses</a>
         <a href="/problems">Problems</a>
         <a href="/playground">Playground</a>
-        <a href="/courses">Courses</a>
     </nav>
 </div>
 
@@ -24,14 +24,12 @@
         left: 0;
     }
 
-    .name {
-        font-size: 30px;
-        color: rgb(71, 31, 16);
-    }
+
 
     .navbar nav {
         display: flex;
         gap: 15px;
+        margin-left: 20vw;
     }
 
     .navbar a {
@@ -41,8 +39,19 @@
         margin-right: 15px;
     }
 
+
+
     .navbar a:hover {
         font-size: 27px;
         color: white;
+    }
+
+    .navbar a.name {
+        font-size: 30px;
+        color: rgb(71, 31, 16);
+    }
+
+    .navbar a.name:hover {
+        color: rgb(71, 31, 16);
     }
 </style>

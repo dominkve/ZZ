@@ -3,7 +3,6 @@
     import PreviousButton from '$lib/components/buttons/PreviousButton.svelte';
 </script>
 
-<h1>C++</h1>
 <h2>Variables</h2>
 
 <div class="button-container">

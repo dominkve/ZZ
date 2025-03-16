@@ -1,4 +1,10 @@
-<div class="output-window">Placeholder for actual output window or frame...</div>
+<script lang="ts">
+    export let content;
+    export let done;
+</script>
+<div class="output-window">
+    <iframe title="Output Window" srcdoc={content}></iframe>
+</div>
 
 <style>
     .output-window {

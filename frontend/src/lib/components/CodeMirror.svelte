@@ -10,6 +10,7 @@
     import { javascript } from '@codemirror/lang-javascript';
     import { cpp } from '@codemirror/lang-cpp';
     import { get } from 'svelte/store';
+    import OutputWindow from './OutputWindow.svelte';
 
     let { language = 'py', select = false }: { language?: string, select?: boolean } = $props();
 
@@ -30,11 +31,13 @@
     let editor: EditorView;
 
     const minLines = 15;
+    const maxLines = 30;
     const lineHeight = 24;
 
     const fixedHeight = EditorView.theme({
         "&": {
             minHeight: `${minLines * lineHeight}px`,
+            maxHeight: `${maxLines * lineHeight}px`,
         },
         ".cm-scroller": {
             overflow: "auto",
@@ -82,15 +85,25 @@
     });
 
     function setLang() {
-        console.log(lang);
+        console.log(language);
         editor.dispatch({
             effects: lang.reconfigure(getLanguageExtension(language))
         });
-        
+    }
+
+    let code = $state("");
+    let browser = $state();
+    function run() {
+        code = get(editorContent);
+        if (language == "html" || language == "javascript") {
+            browser = true;
+            code = get(editorContent);
+            console.log(code);
+        }
     }
 </script>
 
-<div class="editor-container" bind:this={editorContainer}></div>
+<div class="container">
 {#if select}
 <select bind:value={language} onchange={setLang}>
     <option value="cpp">C++</option>
@@ -98,12 +111,47 @@
     <option value="html">HTML</option>
 </select>
 {/if}
+
+<button class="run p-2 bg-blue-300 border-b-black m-2"
+    onclick={run}>
+    RUN
+</button>
+
+<div class="editor-container" bind:this={editorContainer}></div>
+
+</div>
+<div class="output-window">
+    {#if browser}
+    <iframe title="Output Window" srcdoc={code}></iframe>
+    {/if}
+</div>
+
 <style>
-    .editor-container {
+    .output-window {
         position: absolute;
         top: 92px;
+        right: 25px;
+        width: 40vw;
+        height: 80vh;
+        background-color: gray;
+        border: 2px solid black;
+    }
+    .container {
+        position: absolute;
+        top: 90px;
         left: 15px;
+        width: 40vw;
+    }
+
+    .editor-container {
         width: 40vw; /* Adjust as needed */
         border: 2px solid white;
+    }
+
+    .run {
+        left: 100px;
+    }
+    .run:hover {
+        background: blue;
     }
 </style>

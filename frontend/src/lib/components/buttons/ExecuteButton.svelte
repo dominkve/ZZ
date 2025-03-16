@@ -1,5 +1,4 @@
 <script lang="ts">
-
     export let run; // Receive function as a prop
 </script>
 

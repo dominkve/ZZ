@@ -5,11 +5,9 @@
     import Exercise from '$lib/components/Exercise.svelte';
 
 	const language = "cpp";
-
 </script>
 
 
-<h1>C++</h1>
 <h2>Hello, World</h2>
 
 <CodeSnippet {language} content={
@@ -39,23 +37,9 @@ int main() {
 
 
 <style>
-    h1 {
-        text-align: center;
-        font-size: 40px;
-        font-weight: bold;
-        padding: 20px;
-        color: gainsboro;
-    }
 
-    h2 {
-        text-align: left;
-        font-size: 35px;
-        padding: 15px;
-    }
 
-    .button-container {
-        display: flex;
-        justify-content: space-between;
-        width: 100%;
-    }
+
+
+
 </style>

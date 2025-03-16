@@ -4,7 +4,6 @@
 </script>
 
 
-<h1>C++</h1>
 <h2>Functions</h2>
 
 <div class="button-container">
