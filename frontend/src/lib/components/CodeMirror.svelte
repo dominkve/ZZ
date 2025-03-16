@@ -76,7 +76,11 @@
             state: editorState,
             parent: editorContainer, 
         });
-
+        if (sessionStorage.getItem("language")) {
+            editor.dispatch({
+                effects: lang.reconfigure(getLanguageExtension(language))
+            });
+        };
         console.log(editorState.doc.toString());
         // Cleanup function: Destroy CodeMirror when the component is removed
         return () => {
@@ -129,12 +133,19 @@
 <style>
     .output-window {
         position: absolute;
+        display: flex;
         top: 92px;
         right: 25px;
         width: 40vw;
         height: 80vh;
         background-color: gray;
         border: 2px solid black;
+    }
+
+    .output-window iframe {
+        flex: 1;
+        border: none;
+        background-color: white;
     }
     .container {
         position: absolute;

@@ -3,21 +3,22 @@
 </script>
 
 
-<button onclick={() => (window.location.href = destination)} class="next">PREVIOUS</button>
+<button onclick={() => (window.location.href = destination)} class="previous">BACK</button>
 
 
 
 <style>
 
-    .next {
+    .previous {
         background-color: lightblue;
         color: black;
-        border-radius: 25%;
-        padding: 1%;
-        margin: 1%;
+        border-radius: 20%;
+        padding: 2%;
+        margin: 2%;
+        font-weight: bold;
     }
 
-    .next:hover {
+    .previous:hover {
         background-color: green;
     }
 </style>

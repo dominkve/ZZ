@@ -3,10 +3,12 @@
     import { EditorView, basicSetup } from "codemirror";
     import { EditorState } from "@codemirror/state";
     import { cpp } from "@codemirror/lang-cpp";
+    import { javascript } from "@codemirror/lang-javascript";
+    import { html } from '@codemirror/lang-html';
     import { editorContent } from "../../editorStores";
-    import { oneDark
+    import { oneDark } from "@codemirror/theme-one-dark";
 
-     } from "@codemirror/theme-one-dark";
+
     let { content = "Hello!", language = "" } = $props(); // The content of the code snippet
 
     let snippetContainer: HTMLDivElement;
@@ -16,6 +18,8 @@
     function getLanguageExtension(language: string) {
         const languages: Record<string, any> = {
             cpp: cpp(),
+            javascript: javascript(),
+            html: html(),
         };
         return languages[language] || [];
     }
@@ -51,12 +55,13 @@
 
 <div class="code-snippet-container">
     <div class="code-snippet" bind:this={snippetContainer}></div> 
-    <a href="/sfy" onclick={updateStore}>Try!</a>
+    <a href="/sfy" onclick={updateStore}>TRY!</a>
 </div>
 
 
 <style>
     .code-snippet-container {
+        display: grid;
         margin: 20px;
         width: 40vw;
         border: 2px solid black;
@@ -69,11 +74,11 @@
         border: 1px solid black;
     }
     .code-snippet-container a {
-        margin: 7px;
-        font-size: 20px;
+        margin: 10px;
+        font-size: 25px;
         font-weight: bold;
         color: white;
-        padding: 2px;
+        padding: 1px;
     }
 
     .code-snippet-container a:hover {

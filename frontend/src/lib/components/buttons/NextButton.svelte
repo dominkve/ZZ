@@ -11,8 +11,9 @@
         background-color: lightblue;
         color: black;
         border-radius: 25%;
-        padding: 1%;
-        margin: 1%;
+        padding: 2%;
+        margin: 2%;
+        font-weight: bold;
     }
 
     .next:hover {

@@ -3,7 +3,6 @@
 	import { get } from "svelte/store";
     import { editorContent } from "../../editorStores";
     import { onDestroy, onMount } from 'svelte';
-	import OutputWindow from "$lib/components/OutputWindow.svelte";
 
     let language: string = "";
 
@@ -42,5 +41,3 @@
     <button  on:click={goBack}
     class="p-2 bg-emerald-500">Back</button>
 </div>
-
-<OutputWindow />

@@ -27,6 +27,7 @@
     .exercise h1 {
         font-size: 20px;
         font-weight: bold;
+        color: black;
         padding: 10px;
     }
 
